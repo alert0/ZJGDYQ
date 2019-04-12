@@ -1,0 +1,274 @@
+﻿1.专题分析					
+	1.根据事件ID获取事件
+		地址：http://testapi.cnfanews.com:8000/Response/Screen/SubjectAnalysis.ashx
+		参数：
+			appid	用户Key，填 8edc1917e8444237
+			applicationid	用户ID，填247
+			time	当前时间戳,10位
+			type	计算类型,填2
+			columnid	事件ID
+			sign	MD5加密数据，加密的数据为：按参数字母正排序的所有 参数值 追加，再加上客户密码（1694b724c3ba41bc9ed7075584f3d81a）。必须为32位大写。
+			
+		返回值(没写的值忽略):
+			code	200代表正确
+			msg	
+			data
+				channelName	事件名称
+				createTime	事件创建时间
+				ItemType	描述
+
+	2.文章数量,媒体数量
+		地址：http://testapi.cnfanews.com:8000/Response/Screen/SubjectAnalysis.ashx
+		参数：
+			appid	用户Key，填 8edc1917e8444237
+			applicationid	用户ID，填247
+			time	当前时间戳,10位
+			type	计算类型,填3
+			columnid	事件ID
+			sign	MD5加密数据，加密的数据为：按参数字母正排序的所有 参数值 追加，再加上客户密码（1694b724c3ba41bc9ed7075584f3d81a）。必须为32位大写。
+			
+		返回值(没写的值忽略):	
+			code	200代表正确
+			msg	
+			data
+				newscount(文章数量)
+					type	0(报纸) 1(网媒,论坛,移动端) 2(微信) 3(微博)
+					count	数量
+				mediacount(媒体数量)
+					type	0(报纸) 1(网媒,论坛,移动端) 2(微信) 3(微博)
+					count	数量
+					
+	3.原创转载数量
+		地址：http://testapi.cnfanews.com:8000/Response/Screen/SubjectAnalysis.ashx
+		参数：
+			appid	用户Key，填 8edc1917e8444237
+			applicationid	用户ID，填247
+			time	当前时间戳,10位
+			type	计算类型,填4
+			columnid	事件ID
+			sign	MD5加密数据，加密的数据为：按参数字母正排序的所有 参数值 追加，再加上客户密码（1694b724c3ba41bc9ed7075584f3d81a）。必须为32位大写。
+			
+		返回值(没写的值忽略):	
+			code	200代表正确
+			msg	
+			data
+				viocesize	1(原创)	10(转载)
+				count	数量
+
+	4.报道量排行
+		地址：http://testapi.cnfanews.com:8000/Response/Screen/SubjectAnalysis.ashx
+		参数：
+			appid	用户Key，填 8edc1917e8444237
+			applicationid	用户ID，填247
+			time	当前时间戳,10位
+			type	计算类型,填5
+			columnid	事件ID
+			count	返回条数
+			sign	MD5加密数据，加密的数据为：按参数字母正排序的所有 参数值 追加，再加上客户密码（1694b724c3ba41bc9ed7075584f3d81a）。必须为32位大写。
+		
+		返回值(没写的值忽略):	
+			code	200代表正确
+			msg	
+			data
+				medianame	媒体名称
+				count	发稿数量
+				
+	5.传播力排行(10个)
+		地址：http://testapi.cnfanews.com:8000/Response/Screen/SubjectAnalysis.ashx
+		参数：
+			appid	用户Key，填 8edc1917e8444237
+			applicationid	用户ID，填247
+			time	当前时间戳,10位
+			type	计算类型,填6
+			columnid	事件ID
+			sign	MD5加密数据，加密的数据为：按参数字母正排序的所有 参数值 追加，再加上客户密码（1694b724c3ba41bc9ed7075584f3d81a）。必须为32位大写。
+
+		返回值(没写的值忽略):	
+			code	200代表正确
+			msg	
+			data
+				source	媒体名称
+				count	数量
+				
+	6.核心词排行
+		地址：http://testapi.cnfanews.com:8000/Response/Screen/SubjectAnalysis.ashx
+		参数：
+			appid	用户Key，填 8edc1917e8444237
+			applicationid	用户ID，填247
+			time	当前时间戳,10位
+			type	计算类型,填7
+			columnid	事件ID
+			count	返回条数
+			sign	MD5加密数据，加密的数据为：按参数字母正排序的所有 参数值 追加，再加上客户密码（1694b724c3ba41bc9ed7075584f3d81a）。必须为32位大写。
+
+		返回值(没写的值忽略):	
+			code	200代表正确
+			msg	
+			data
+				word	词
+				count	出现次数
+				
+	7.发展趋势
+	7.发展趋势中 hourdata为发稿量随时间的变化趋势，hourdata2为发稿增量随时间的变化趋势
+		地址：http://testapi.cnfanews.com:8000/Response/Screen/SubjectAnalysis.ashx
+		参数：
+			appid	用户Key，填 8edc1917e8444237
+			applicationid	用户ID，填247
+			time	当前时间戳,10位
+			type	计算类型,填8
+			columnid	事件ID
+			sign	MD5加密数据，加密的数据为：按参数字母正排序的所有 参数值 追加，再加上客户密码（1694b724c3ba41bc9ed7075584f3d81a）。必须为32位大写。
+
+		返回值(没写的值忽略):	
+			code	200代表正确
+			msg	
+			data(json字符串)
+				hourData(总量)
+					x	x坐标轴,时间戳
+					y	y坐标轴，数量
+				hourData2(增量)
+					x	x坐标轴,时间戳
+					y	y坐标轴，数量
+					
+	8.热度趋势
+	8.热度趋势中 data2为热度值随时间变化的趋势，data1为热度增量随时间变化的趋势。	
+		地址：http://testapi.cnfanews.com:8000/Response/Screen/SubjectAnalysis.ashx
+		参数：
+			appid	用户Key，填 8edc1917e8444237
+			applicationid	用户ID，填247
+			time	当前时间戳,10位
+			type	计算类型,填9
+			columnid	事件ID
+			sign	MD5加密数据，加密的数据为：按参数字母正排序的所有 参数值 追加，再加上客户密码（1694b724c3ba41bc9ed7075584f3d81a）。必须为32位大写。
+
+		返回值(没写的值忽略):	
+			code	200代表正确
+			msg	
+			data
+				data1(增量)
+					y  y坐标轴
+					x  x坐标轴
+				data2(总量)
+					y  y坐标轴
+					x  x坐标轴	
+					
+	9.情感趋势
+		地址：http://testapi.cnfanews.com:8000/Response/Screen/SubjectAnalysis.ashx
+		参数：
+			appid	用户Key，填 8edc1917e8444237
+			applicationid	用户ID，填247
+			time	当前时间戳,10位
+			type	计算类型,填10
+			columnid	事件ID
+			sign	MD5加密数据，加密的数据为：按参数字母正排序的所有 参数值 追加，再加上客户密码（1694b724c3ba41bc9ed7075584f3d81a）。必须为32位大写。
+
+		返回值(没写的值忽略):	
+			时间戳和情感值
+		
+	10.地域
+		地址：http://testapi.cnfanews.com:8000/Response/Screen/SubjectAnalysis.ashx
+		参数：
+			appid	用户Key，填 8edc1917e8444237
+			applicationid	用户ID，填247
+			time	当前时间戳,10位
+			type	计算类型,填11
+			columnid	事件ID
+			sign	MD5加密数据，加密的数据为：按参数字母正排序的所有 参数值 追加，再加上客户密码（1694b724c3ba41bc9ed7075584f3d81a）。必须为32位大写。
+
+		返回值(没写的值忽略):	
+			省和稿件数量
+		
+	11.首发报道
+		地址：http://testapi.cnfanews.com:8000/Response/Screen/SubjectAnalysis.ashx
+		参数：
+			appid	用户Key，填 8edc1917e8444237
+			applicationid	用户ID，填247
+			time	当前时间戳,10位
+			type	计算类型,填12
+			columnid	事件ID
+			sign	MD5加密数据，加密的数据为：按参数字母正排序的所有 参数值 追加，再加上客户密码（1694b724c3ba41bc9ed7075584f3d81a）。必须为32位大写。
+
+		返回值(没写的值忽略):	
+			rows(稿件数组,取第0个就行)
+				title	标题
+				papername	发布来源,如果要媒体就按照-分隔,取第一个
+				markinfo	摘要
+				updatetime	发布时间
+			
+	12.最新报道
+		地址：http://testapi.cnfanews.com:8000/Response/Screen/Column.ashx
+		请求方式:GET请求		
+		参数：
+			appid	用户Key，填 8edc1917e8444237
+			applicationid	用户ID，填247
+			time	当前时间戳,10位
+			type	计算类型,填1
+			columnid	事件ID
+			count	返回条数,填1
+			startdate	当前日期减去一天,例：2019-2-27
+			enddate	当前日期,例：2019-2-28
+			sign	MD5加密数据，加密的数据为：按参数字母正排序的所有 参数值 追加，再加上客户密码（1694b724c3ba41bc9ed7075584f3d81a）。必须为32位大写。
+			
+		返回值：
+			code	200代表正确
+			msg	
+			data
+				id	凡闻ID
+				title	标题
+				url	原文地址
+				articleSource	稿件来源
+				author	作者
+				publishTime	发布时间
+				crawlSource	抓取来源(包含哪个栏目)
+				markinfo	简介
+				firstImg	封面图,如果没有默认正文第一张图
+				
+	13.最新事件
+		地址：http://testapi.cnfanews.com:8000/Response/Screen/SubjectAnalysis.ashx
+		参数：
+			appid	用户Key，填 8edc1917e8444237
+			applicationid	用户ID，填247
+			time	当前时间戳,10位
+			type	计算类型,填1
+			count	返回条数
+			sign	MD5加密数据，加密的数据为：按参数字母正排序的所有 参数值 追加，再加上客户密码（1694b724c3ba41bc9ed7075584f3d81a）。必须为32位大写。
+		
+		返回值(没写的值忽略):
+			code	200代表正确
+			msg	
+			data
+				id	事件ID
+				text	事件名称
+				ItemType	描述
+				createTime	事件创建时间
+							
+2.视频新闻
+	地址：http://testapi.cnfanews.com:8000/Response/ZJTV/NewsList.ashx
+	请求方式:GET请求
+	参数：
+		appid	用户Key，填 8edc1917e8444237
+		applicationid	用户ID，填247
+		time	当前时间戳,10位
+		type	计算类型,填10
+		channelid	栏目ID,103524(视频栏目)
+		page	返回条数
+		starttime	统计开始时间，例：2019-1-6(建议当前日期减去两个月,要不然数据较少)
+		endtime	统计结束时间，例：2019-3-6
+		sign	MD5加密数据，加密的数据为：按参数字母正排序的所有 参数值 追加，再加上客户密码（1694b724c3ba41bc9ed7075584f3d81a）。必须为32位大写。
+	
+	返回值：
+		code	200代表正确
+		msg	
+		total	总条数
+		data
+			id	凡闻ID
+			title	标题
+			url	原文地址
+			author	作者
+			publishTime	发布时间
+			source	发布媒体
+			classify	类别
+			content	内容
+			markinfo	简介
+			video	视频地址
+			firstImg	封面图,如果没有默认正文第一张图
